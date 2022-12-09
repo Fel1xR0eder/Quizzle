@@ -1,0 +1,78 @@
+.navbar {
+    height: 5vh;
+}
+
+.quiz-card {
+    background-color: rgb(254, 250, 240) !important;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-logo {
+    object-fit: cover;
+    padding: 10px;
+    padding-bottom: 55px;
+    border-radius: 5px;
+}
+
+.main-card {
+    display: flex;
+    flex-direction: row !important;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.card-title {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.card:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.card-body {
+    width: 30vw !important;
+}
+
+.left-card {
+    background-color: rgb(40,54,91);
+    display: flex;
+    flex-direction: column;
+}
+
+.left-card a {
+    text-decoration: none;
+    color: rgb(254, 250, 240);
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.right-card {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.all-questions {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    border-top: 2px solid rgb(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: space-between;
+}
+
+.green-answer {
+    background-color: rgba(52, 167, 84, 0.8) !important;
+    color: white !important;
+}
+
+.red-answer {
+    background-color: rgba(255, 0, 0, 0.8) !important;
+    color: white !important;
+}
