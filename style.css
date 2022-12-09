@@ -59,6 +59,13 @@
     padding-left: 10px;
     padding-right: 10px;
     width: -webkit-fill-available;
+    background-image: url(./img/brainbg.jpg);
+    object-fit: cover;
+    background-position: center;
+}
+
+.right-card img {
+    opacity: 0.9;
 }
 
 .all-questions {
@@ -110,7 +117,7 @@
     border-radius: 5px !important;
 }    
 
-span {
+.span-coral {
     color: coral;
     margin-bottom: 10px;
 }
