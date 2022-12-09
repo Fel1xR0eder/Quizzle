@@ -54,6 +54,8 @@ let quiz = [{
 
 let currentQuestion = 0;
 
+let rightQuestions = 0;
+
 function init() {
     document.getElementById('all-questions').innerHTML = quiz.length;
 
@@ -67,8 +69,9 @@ function showQuestion() {
 
         document.getElementById('end-screen').style = '';
         document.getElementById('quiz-card').style = 'display: none';
+        document.getElementById('score').innerHTML = `Your Score is ${rightQuestions} of ${quiz.length}`
     } else {
-        
+
         document.getElementById('question-number').innerHTML = currentQuestion + 1;
 
         document.getElementById('questionText').innerHTML = question['question'];
@@ -87,6 +90,7 @@ function answer(selection) {                                                //se
 
     if (selectedQuestionNumber == question['right_answer']) {                // 3 == 3
         document.getElementById(selection).parentNode.classList.add('green-answer');
+        rightQuestions++;
     } else {
         document.getElementById(selection).parentNode.classList.add('red-answer');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('green-answer');
