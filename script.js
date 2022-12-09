@@ -64,10 +64,11 @@ function showQuestion() {
     let question = quiz[currentQuestion];
 
     if (currentQuestion >= quiz.length) {
+
         document.getElementById('end-screen').style = '';
         document.getElementById('quiz-card').style = 'display: none';
     } else {
-
+        
         document.getElementById('question-number').innerHTML = currentQuestion + 1;
 
         document.getElementById('questionText').innerHTML = question['question'];
