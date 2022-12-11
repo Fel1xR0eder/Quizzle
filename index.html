@@ -35,12 +35,17 @@
             <div class="right-card">
                 <div class="endscreen-top">
                     <img src="./img/brain result.png">
-                    <p><b>Congrantulations! </b></p>
+                    <p class="final-line"><b>Congrantulations! </b></p>
                 </div>
                 <div class="endscreen-bottom">
                     <span class="span-coral" id="score"><b>YOUR SCORE:</b></span>
-                    <button class="btn btn-primary"> SHARE </button>
-                    <button class="btn btn-primary"> REPLAY </button>
+                    <div class="end-screen-button">
+                        <button class="btn btn-primary"> SHARE </button>
+                        <button class="btn btn-primary" onclick="restartGame()"> REPLAY </button>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar-end" role="progressbar" style="width: 100%"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,7 +62,7 @@
             </div>
             
             <div class="right-card">
-              <h4 class="card-title">Feli's Quizzle</h4>
+              <h4 class="card-title">Felizzle's Quizzle</h4>
               <p class="card-text" id="questionText">Frage</p>
                 <div class="card mt-3 mb-2" onclick="answer('answer_1')">
                     <div class="card-body" id="answer_1">
@@ -85,6 +90,10 @@
                 <div class="all-questions">
                     <span><b id="question-number">1</b> von <b id="all-questions">7</b> Fragen</span>
                     <button class="btn btn-primary" id="next-button" onclick="nextQuestion()" disabled>Nächste Frage</button>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar" role="progressbar" style="width: 75%"></div>
                 </div>
                 
             </div>

@@ -53,8 +53,11 @@ let quiz = [{
 }];
 
 let currentQuestion = 0;
-
 let rightQuestions = 0;
+
+let AUDIO_SUCCESS = new Audio('/audio/success.mp3');
+let AUDIO_FAIL = new Audio('/audio/wrong.mp3');
+
 
 function init() {
     document.getElementById('all-questions').innerHTML = quiz.length;
@@ -63,23 +66,38 @@ function init() {
 }
 
 function showQuestion() {
-    let question = quiz[currentQuestion];
-
-    if (currentQuestion >= quiz.length) {
-
-        document.getElementById('end-screen').style = '';
-        document.getElementById('quiz-card').style = 'display: none';
-        document.getElementById('score').innerHTML = `Your Score is ${rightQuestions} of ${quiz.length}`
+    if (gameOver()) {
+        showEndScreen();
     } else {
-
-        document.getElementById('question-number').innerHTML = currentQuestion + 1;
-
-        document.getElementById('questionText').innerHTML = question['question'];
-        document.getElementById('answer_1').innerHTML = question['answer_1'];
-        document.getElementById('answer_2').innerHTML = question['answer_2'];
-        document.getElementById('answer_3').innerHTML = question['answer_3'];
-        document.getElementById('answer_4').innerHTML = question['answer_4'];
+        updateProgressBar();
+        updateToNextQuestion();
     }
+}
+
+function gameOver(){
+   return currentQuestion >= quiz.length;
+}
+
+function updateProgressBar() {
+    let percent = currentQuestion / quiz.length;
+    percent = percent * 100;
+    document.getElementById('progress-bar').style.width = `${percent}%`;
+}
+
+function updateToNextQuestion() {
+    let question = quiz[currentQuestion];
+    document.getElementById('question-number').innerHTML = currentQuestion + 1;
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+function showEndScreen() {
+    document.getElementById('end-screen').style = '';
+    document.getElementById('quiz-card').style = 'display: none';
+    document.getElementById('score').innerHTML = `Your Score is ${rightQuestions} of ${quiz.length}`
 }
 
 function answer(selection) {                                                //selection = aktuelle Antwort
@@ -91,7 +109,9 @@ function answer(selection) {                                                //se
     if (selectedQuestionNumber == question['right_answer']) {                // 3 == 3
         document.getElementById(selection).parentNode.classList.add('green-answer');
         rightQuestions++;
+        AUDIO_SUCCESS.play();
     } else {
+        AUDIO_FAIL.play();
         document.getElementById(selection).parentNode.classList.add('red-answer');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('green-answer');
     }
@@ -114,4 +134,13 @@ function resetAnswer() {
     document.getElementById('answer_3').parentNode.classList.remove('green-answer');
     document.getElementById('answer_4').parentNode.classList.remove('red-answer');
     document.getElementById('answer_4').parentNode.classList.remove('green-answer');
+}
+
+function restartGame() {
+    document.getElementById('end-screen').style = 'display: none';
+    document.getElementById('quiz-card').style = '';
+
+    currentQuestion = 0;
+    rightQuestions = 0;
+    init();
 }

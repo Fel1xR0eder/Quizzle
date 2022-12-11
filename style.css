@@ -102,9 +102,9 @@
 .endscreen-bottom {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
     gap: 5px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .button-outline {
@@ -121,4 +121,19 @@
     color: coral;
     font-weight: bolder;
     margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.final-line {
+    font-size: 30px;
+}
+
+.progress {
+    margin-top: 20px !important;
+}
+
+.end-screen-button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
