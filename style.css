@@ -2,6 +2,17 @@
     height: 5vh;
 }
 
+.sidebar-p {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.sidebar-p:hover {
+    color: lightblue;
+}
+
 .quiz-card {
     background-color: rgb(254, 250, 240) !important;
     height: 95vh;

@@ -54,6 +54,7 @@ let quiz = [{
 
 let currentQuestion = 0;
 let rightQuestions = 0;
+let pushOneAnswer = false;
 
 let AUDIO_SUCCESS = new Audio('/audio/success.mp3');
 let AUDIO_FAIL = new Audio('/audio/wrong.mp3');
@@ -74,8 +75,8 @@ function showQuestion() {
     }
 }
 
-function gameOver(){
-   return currentQuestion >= quiz.length;
+function gameOver() {
+    return currentQuestion >= quiz.length;
 }
 
 function updateProgressBar() {
@@ -103,18 +104,18 @@ function showEndScreen() {
 function answer(selection) {                                                //selection = aktuelle Antwort
     let question = quiz[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);                       //return vom letzten string = 3
-
-    let idOfRightAnswer = `answer_${question['right_answer']}`;             //question['right_answer] = 3
+    let idOfRightAnswer = `answer_${question['right_answer']}`;            //question['right_answer] = 3
 
     if (selectedQuestionNumber == question['right_answer']) {                // 3 == 3
         document.getElementById(selection).parentNode.classList.add('green-answer');
         rightQuestions++;
-        AUDIO_SUCCESS.play();
+        // AUDIO_SUCCESS.play();
     } else {
-        AUDIO_FAIL.play();
+        // AUDIO_FAIL.play();
         document.getElementById(selection).parentNode.classList.add('red-answer');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('green-answer');
     }
+    
     document.getElementById('next-button').disabled = false;
 }
 

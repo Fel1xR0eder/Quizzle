@@ -1,0 +1,9 @@
+let buttonPushOnce = false;
+
+if (!buttonPushOnce) {
+
+   if( function ) {
+
+   
+   }
+}
