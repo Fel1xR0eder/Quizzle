@@ -1,9 +1,3 @@
-let buttonPushOnce = false;
+let SUCCESS = NEW_AUDIO(./audio/SUCCESS)
 
-if (!buttonPushOnce) {
-
-   if( function ) {
-
-   
-   }
-}
+don't forget the . 
