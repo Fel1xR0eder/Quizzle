@@ -1,3 +1,0 @@
-let SUCCESS = NEW_AUDIO(./audio/SUCCESS)
-
-don't forget the . 
