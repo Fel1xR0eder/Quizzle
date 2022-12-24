@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </head>
-<body onload="init()">
+<body>
     <nav class="navbar bg-light">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">QuizApp</span>
@@ -36,13 +36,12 @@
             <div class="right-card">
                 <div class="endscreen-top">
                     <img src="./img/brain result.png">
-                    <p class="final-line"><b>Congrantulations! </b></p>
+                    <p class="final-line"><b> Congratulations </b></p>
                 </div>
                 <div class="endscreen-bottom">
-                    <span class="span-coral" id="score"><b>YOUR SCORE:</b></span>
+                    <span class="span-coral" id="score"><b>Your Score</b></span>
                     <div class="end-screen-button">
-                        <button class="btn btn-primary"> SHARE </button>
-                        <button class="btn btn-primary" onclick="restartGame()"> REPLAY </button>
+                        <button class="btn btn-primary" onclick="restartGame()"> Replay </button>
                     </div>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" id="progress-bar-end" role="progressbar" style="width: 100%"></div>
@@ -62,9 +61,14 @@
                <p class="sidebar-p">JAVASCRIPT</p>
                <p class="sidebar-p">BOOTSTRAP</p>
             </div>
+
+            <div id="start-screen" class="start-screen">
+                <h1>Welcome to my Quiz</h1>
+                <button onclick="init()" class="btn-center btn btn-primary"> Start the quiz (English)</button>
+            </div>
             
-            <div class="right-card">
-              <h4 class="card-title">Felizzle's Quizzle</h4>
+            <div id="right-card" class="right-card d-none">
+              <h4 class="card-title">Felix' Quiz</h4>
               <p class="card-text" id="questionText">Frage</p>
                 <div id="div-onclick0" class="card mt-3 mb-2" onclick="answer('answer_1')">
                     <div class="card-body" id="answer_1">
@@ -90,8 +94,8 @@
                     </div>
                 </div>
                 <div class="all-questions">
-                    <span><b id="question-number">1</b> von <b id="all-questions">7</b> Fragen</span>
-                    <button class="btn btn-primary" id="next-button" onclick="nextQuestion()" disabled>Nächste Frage</button>
+                    <span><b id="question-number">1</b> of <b id="all-questions">7</b> questions</span>
+                    <button class="btn btn-primary" id="next-button" onclick="nextQuestion()" disabled>Next Question</button>
                 </div>
 
                 <div class="progress">

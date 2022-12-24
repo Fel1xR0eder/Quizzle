@@ -2,6 +2,19 @@
     height: 5vh;
 }
 
+h1 {
+    text-align: center;
+}
+
+.start-screen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
 .sidebar-p {
     color: white;
     text-align: center;

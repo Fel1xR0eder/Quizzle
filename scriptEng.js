@@ -1,4 +1,4 @@
-/*let quizGer = [{
+let quizGer = [{
     'question': 'Wann entdeckte Christoph Kolumbus Amerika?',
     'answer_1': '1482',
     'answer_2': '1492',
@@ -50,7 +50,7 @@
     'answer_3': 'Der teuerste Ahornsirup der Welt',
     'answer_4': 'Der teuerste Kaffee der Welt',
     'right_answer': 4
-}]; */
+}];
 
 let quizEng = [{
     'question': 'When did Christopher Columbus discover America?',
@@ -115,32 +115,36 @@ let rightQuestions = 0;
 
 
 function init() {
-    document.getElementById('all-questions').innerHTML = quizEng.length;
+    document.getElementById('all-questions').innerHTML = quiz.length;
     document.getElementById('right-card').classList.remove('d-none');
     document.getElementById('start-screen').classList.add('d-none');
     showQuestion();
 }
 
-function showQuestion() {
+function showQuestionEng() {
     if (gameOver()) {
         showEndScreen();
     } else {
         updateProgressBar();
-        updateToNextQuestion();
+        updateToNextQuestionEng();
     }
 }
 
 function gameOver() {
-    return currentQuestion >= quizEng.length;
+    return currentQuestion >= quiz.length;
 }
 
 function updateProgressBar() {
-    let percent = currentQuestion / quizEng.length;
+    let percent = currentQuestion / quiz.length;
     percent = percent * 100;
     document.getElementById('progress-bar').style.width = `${percent}%`;
 }
 
-function answer(selection) {
+//              ####                     ####
+//              ####     QUIZ ENGLISH    #### 
+//              ####                     ####
+
+function answerEng(selection) {
     let question = quizEng[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer_${question['right_answer']}`;
@@ -162,8 +166,8 @@ function answer(selection) {
     nextButton.disabled = false;
 }
 
-function updateToNextQuestion() {
-    let question = quizEng[currentQuestion];
+function updateToNextQuestionEng() {
+    let question = quizGer[currentQuestion];
     document.getElementById('question-number').innerHTML = currentQuestion + 1;
     document.getElementById('questionText').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
@@ -172,16 +176,67 @@ function updateToNextQuestion() {
     document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
-function showEndScreen() {
+function showEndScreenEng() {
     document.getElementById('end-screen').style = '';
     document.getElementById('quiz-card').style = 'display: none';
-    document.getElementById('score').innerHTML = `Your SCORE is ${rightQuestions} of ${quizEng.length}`
+    document.getElementById('score').innerHTML = `YOUR SCORE IS ${rightQuestions} OF ${quiz.length}`
+}
+
+//              ####                     ####
+//              ####     QUIZ GERMAN     #### 
+//              ####                     ####
+
+function showEndScreenGer() {
+    document.getElementById('end-screen').style = '';
+    document.getElementById('quiz-card').style = 'display: none';
+    document.getElementById('score').innerHTML = `Deine Punktzahl ist ${rightQuestions} von ${quiz.length}`
+}
+
+function answerGer(selection) {                                                //selection = aktuelle Antwort
+    let question = quizGer[currentQuestion];
+    let selectedQuestionNumber = selection.slice(-1);                       //return vom letzten string = 3
+    let idOfRightAnswer = `answer_${question['right_answer']}`;             //question['right_answer] = 3
+    let nextButton = document.getElementById('next-button');
+
+    if (nextButton.disabled == true) {
+
+        if (selectedQuestionNumber == question['right_answer']) {               // 3 == 3
+            document.getElementById(selection).parentNode.classList.add('green-answer');
+            rightQuestions++;
+            //AUDIO_SUCCESS.play();
+        } else {
+            //AUDIO_FAIL.play();
+            document.getElementById(selection).parentNode.classList.add('red-answer');
+            document.getElementById(idOfRightAnswer).parentNode.classList.add('green-answer');
+        }
+    }
+
+    nextButton.disabled = false;
+}
+
+function updateToNextQuestionGer() {
+    let question = quizGer[currentQuestion];
+    document.getElementById('question-number').innerHTML = currentQuestion + 1;
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+function showQuestionGer() {
+    if (gameOver()) {
+        showEndScreen();
+    } else {
+        updateProgressBar();
+        updateToNextQuestionGer();
+    }
 }
 
 function nextQuestion() {
     currentQuestion++;
     document.getElementById('next-button').disabled = true;
-    showQuestion();
+    showQuestionGer();
     resetAnswer();
 }
 
