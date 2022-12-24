@@ -105,18 +105,22 @@ function answer(selection) {                                                //se
     let question = quiz[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);                       //return vom letzten string = 3
     let idOfRightAnswer = `answer_${question['right_answer']}`;             //question['right_answer] = 3
+    let nextButton = document.getElementById('next-button');
 
-    if (selectedQuestionNumber == question['right_answer']) {               // 3 == 3
-        document.getElementById(selection).parentNode.classList.add('green-answer');
-        rightQuestions++;
-        //AUDIO_SUCCESS.play();
-    } else {
-        //AUDIO_FAIL.play();
-        document.getElementById(selection).parentNode.classList.add('red-answer');
-        document.getElementById(idOfRightAnswer).parentNode.classList.add('green-answer');
+    if (nextButton.disabled == true) {
+
+        if (selectedQuestionNumber == question['right_answer']) {               // 3 == 3
+            document.getElementById(selection).parentNode.classList.add('green-answer');
+            rightQuestions++;
+            //AUDIO_SUCCESS.play();
+        } else {
+            //AUDIO_FAIL.play();
+            document.getElementById(selection).parentNode.classList.add('red-answer');
+            document.getElementById(idOfRightAnswer).parentNode.classList.add('green-answer');
+        }
     }
 
-    document.getElementById('next-button').disabled = false;
+    nextButton.disabled = false;
 }
 
 function nextQuestion() {
